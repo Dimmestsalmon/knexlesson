@@ -3,12 +3,12 @@ require('dotenv').config()
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
-const connectionString = process.env.DB_CONNECTION_STRING;
+
 module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: connectionString
+    connection: process.env.DB_CONNECTION_STRING
   },
   staging: {
     client: 'postgresql',
