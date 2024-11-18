@@ -13,10 +13,11 @@ app.listen(port, ()=>{
 })
 
 app.get('/pets', (req,res) => {
-  knex('pet')
-    .select('*')
+  knex('pet', 'food_type')
+    .join('food_type', 'pet.food_type_id', '=', 'food_type.id')
+    .select('pet.name', 'food_type.name as foodType')
     .then(data => {
-      var petNames = data.map(pet => `pets name is: ${pet.name} and it eats ${pet.food_type_id}`)
+      var petNames = data.map(pet => `pets name is: ${pet.name} and it eats ${pet.foodType}`)
       res.json(petNames)
     })
 })
