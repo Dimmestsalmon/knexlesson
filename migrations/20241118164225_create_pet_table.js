@@ -8,6 +8,7 @@ exports.up = function(knex) {
     table.string('name', 250)
     table.integer('pet_type_id')
     table.foreign('pet_type_id').references('pet_type.id')
+
   })
 };
 
